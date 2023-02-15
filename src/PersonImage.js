@@ -1,19 +1,24 @@
 import { useEffect, useState } from "react";
 
-const PersonImage = ({ person }) => {
+function PersonImage() {
+  const [hash, setHash] = useState([]);
+  const [imageData, setImageData] = useState("");
+
   const { Configuration, OpenAIApi } = require("openai");
+
   const getImage = async () => {
     const configuration = new Configuration({
-      apiKey: "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",
+      apiKey: "",
     });
     const openai = new OpenAIApi(configuration);
     const response = await openai.createImage({
-      prompt: "Ghandi",
+      prompt: "Mike Tyson",
       n: 2,
       size: "1024x1024",
     });
     console.log(response.data.data[0].url);
   };
+
   return (
     <div className="bg-blue-200">
       <button
@@ -23,9 +28,9 @@ const PersonImage = ({ person }) => {
       >
         Get Image
       </button>
-      <PersonImage person={"tom cruise"}></PersonImage>
+      <h1>hi</h1>
     </div>
   );
-};
+}
 
 export default PersonImage;
