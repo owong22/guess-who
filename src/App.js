@@ -2,56 +2,61 @@ import "./App.css";
 import axios from "axios";
 import { useEffect, useState } from "react";
 
-const encodedParams = new URLSearchParams();
-encodedParams.append("prompt", "dog");
-encodedParams.append("id", "12345");
-encodedParams.append("width", "512");
-encodedParams.append("height", "512");
-encodedParams.append("inferenceSteps", "50");
-encodedParams.append("guidanceScale", "7.5");
-const options = {
-  method: "POST",
-  url: "https://arimagesynthesizer.p.rapidapi.com/generate",
-  headers: {
-    "content-type": "application/x-www-form-urlencoded",
-    "X-RapidAPI-Key": "0506cf449bmshdeb5b37664c3214p13c48cjsnc33d49ffc363",
-    "X-RapidAPI-Host": "arimagesynthesizer.p.rapidapi.com",
-  },
-  data: encodedParams,
-};
-
-const options2 = {
-  method: "GET",
-  url: "https://arimagesynthesizer.p.rapidapi.com/get",
-  params: { hash: "c295134e2823339e35f5ae0b6809d3b3", returnType: "image" },
-  headers: {
-    "X-RapidAPI-Key": "0506cf449bmshdeb5b37664c3214p13c48cjsnc33d49ffc363",
-    "X-RapidAPI-Host": "arimagesynthesizer.p.rapidapi.com",
-  },
-};
 function App() {
-  const [imageData, setImageData] = useState();
-  useEffect(() => {
-    axios
-      .request(options)
-      .then(function (response) {
-        console.log(response.data);
-      })
-      .catch(function (error) {
-        console.error(error);
-      });
-    axios
-      .request(options2)
-      .then(function (response) {
-        console.log(response.data);
-        // setImageData(response);
-      })
-      .catch(function (error) {
-        console.error(error);
-      });
-  }, []);
+  const [hash, setHash] = useState([]);
+  const [imageData, setImageData] = useState("");
 
-  return <div className="bg-blue-200"></div>;
+  const { Configuration, OpenAIApi } = require("openai");
+
+  //   const options = {
+  //     method: "POST",
+  //     url: "https://arimagesynthesizer.p.rapidapi.com/generate",
+  //     headers: {
+  //       "content-type": "application/x-www-form-urlencoded",
+  //       "X-RapidAPI-Key": "0506cf449bmshdeb5b37664c3214p13c48cjsnc33d49ffc363",
+  //       "X-RapidAPI-Host": "arimagesynthesizer.p.rapidapi.com",
+  //     },
+  //     data: encodedParams,
+  //   };
+
+  //   const getImageData = () => {
+  //     axios
+  //       .request(options)
+  //       .then(function (response) {
+  //         setHash([...hash, response.data]);
+  //         console.log(response);
+  //         // console.log(hash);
+  //       })
+  //       .catch(function (error) {
+  //         console.error(error);
+  //       });
+  //   };
+
+  const getImage = async () => {
+    const configuration = new Configuration({
+      apiKey: "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",
+    });
+    const openai = new OpenAIApi(configuration);
+    const response = await openai.createImage({
+      prompt: "Ghandi",
+      n: 2,
+      size: "1024x1024",
+    });
+    console.log(response.data.data[0].url);
+  };
+
+  return (
+    <div className="bg-blue-200">
+      <button onClick={() => {}}>Press</button>
+      <button
+        onClick={() => {
+          getImage();
+        }}
+      >
+        Get Image
+      </button>
+    </div>
+  );
 }
 
 export default App;
