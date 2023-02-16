@@ -13,7 +13,7 @@ function PersonImage() {
   const getImage = async (person) => {
     setIsLoading(true);
     const configuration = new Configuration({
-      apiKey: "",
+      apiKey: "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",
     });
     const openai = new OpenAIApi(configuration);
     const response = await openai.createImage({
@@ -44,49 +44,5 @@ function PersonImage() {
     </div>
   );
 }
-
-// function PersonImage({ newPerson }) {
-//   const [imageData, setImageData] = useState("");
-//   const [person, setPerson] = useState(newPerson);
-//   const [isLoading, setIsLoading] = useState(false);
-//   const ignoreFirstCall = useRef(true);
-//   const { Configuration, OpenAIApi } = require("openai");
-
-//   const getImage = async (person) => {
-//     setIsLoading(true);
-//     const configuration = new Configuration({
-//       apiKey: "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",
-//     });
-//     const openai = new OpenAIApi(configuration);
-//     const response = await openai.createImage({
-//       prompt: `${person}`,
-//       n: 2,
-//       size: "1024x1024",
-//     });
-
-//     console.log(response.data.data[0].url);
-//     setImageData(response.data.data[0].url);
-//     setIsLoading(false);
-//   };
-
-//   useEffect(() => {
-//     if (ignoreFirstCall.current) {
-//       ignoreFirstCall.current = false;
-//       return;
-//     } else {
-//       getImage(person);
-//     }
-//   }, []);
-
-//   if (isLoading) {
-//     return <Loading></Loading>;
-//   }
-
-//   return (
-//     <div className="bg-blue-200">
-//       <img src={imageData} alt="" />
-//     </div>
-//   );
-// }
 
 export default PersonImage;
