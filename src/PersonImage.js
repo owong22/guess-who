@@ -1,19 +1,19 @@
 import { useEffect, useState, useRef, useContext } from "react";
 import Loading from "./Loading";
 import { personQuotedContext } from "./App";
-function PersonImage() {
+function PersonImage({ rerender, setRerender }) {
   const [imageData, setImageData] = useState("");
 
   const [isLoading, setIsLoading] = useState(false);
   const ignoreFirstCall = useRef(true);
-
+  const ignoreSecondCall = useRef(true);
   const { personQuoted, personFetched } = useContext(personQuotedContext);
   const { Configuration, OpenAIApi } = require("openai");
 
   const getImage = async (person) => {
     setIsLoading(true);
     const configuration = new Configuration({
-      apiKey: "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",
+      apiKey: "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",
     });
     const openai = new OpenAIApi(configuration);
     const response = await openai.createImage({
@@ -29,10 +29,13 @@ function PersonImage() {
     if (ignoreFirstCall.current) {
       ignoreFirstCall.current = false;
       return;
+    } else if (ignoreSecondCall.current) {
+      ignoreSecondCall.current = false;
+      return;
     } else if (personFetched) {
       getImage(personQuoted);
     }
-  }, [personQuoted]);
+  }, []);
 
   if (isLoading) {
     return <Loading></Loading>;

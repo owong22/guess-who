@@ -4,7 +4,7 @@ import PersonImage from "./PersonImage";
 import Loading from "./Loading";
 import { personQuotedContext } from "./App";
 
-const PersonQuote = () => {
+const PersonQuote = ({ rerender, setRerender }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [quote, setQuote] = useState("");
   const firstRender = useRef(true);
@@ -41,13 +41,21 @@ const PersonQuote = () => {
       return;
     }
     getQuote();
-  }, []);
+  }, [rerender]);
 
   if (isLoading) {
-    return <Loading></Loading>;
+    return (
+      <div>
+        <Loading></Loading>
+      </div>
+    );
   }
 
-  return <div>{quote}</div>;
+  return (
+    <div>
+      <div>{quote}</div>
+    </div>
+  );
 };
 
-export default PersonQuote;
+export default <PersonQuoteAndImage></PersonQuoteAndImage>;
