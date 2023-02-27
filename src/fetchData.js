@@ -4,7 +4,7 @@ import { personQuotedContext } from "./App";
 const options = {
   method: "GET",
   headers: {
-    "X-RapidAPI-Key": "0506cf449bmshdeb5b37664c3214p13c48cjsnc33d49ffc363",
+    "X-RapidAPI-Key": `${process.env.REACT_APP_API_KEY_QUOTE}`,
     "X-RapidAPI-Host": "quotes15.p.rapidapi.com",
   },
 };
@@ -24,7 +24,7 @@ const { Configuration, OpenAIApi } = require("openai");
 
 export const fetchImage = async (person) => {
   const configuration = new Configuration({
-    apiKey: "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",
+    apiKey: `${process.env.REACT_APP_API_KEY_IMAGE}`,
   });
   const openai = new OpenAIApi(configuration);
   const response = await openai.createImage({
