@@ -1,40 +1,19 @@
-import { useEffect, useState, useContext, createContext, useRef } from "react";
+import { useState, createContext } from "react";
 import "./App.css";
-import PersonImage from "./PersonImage";
-import PersonQuoteAndImage from "./PersonQuote";
+
+import { useQuery, useMutation } from "@tanstack/react-query";
+import { ReactQuery } from "./ReactQuery";
+
+const POSTS = [{ id: 1, title: "Post 1", id: 2, title: "Post 2" }];
 
 export const personQuotedContext = createContext();
 
 function App() {
   const [personQuoted, setPersonQuoted] = useState("");
-  const [personFetched, setPersonFetched] = useState(false);
-  const [displayPuzzle, setDisplayPuzzle] = useState(false);
-  const [rerender, setRerender] = useState(false);
 
   return (
-    <personQuotedContext.Provider
-      value={{ setPersonQuoted, personQuoted, personFetched, setPersonFetched }}
-    >
-      <div className="bg-blue-200">
-        <PersonQuoteAndImage
-          setRerender={setRerender}
-          rerender={rerender}
-        ></PersonQuoteAndImage>
-        <PersonImage
-          setRerender={setRerender}
-          rerender={rerender}
-        ></PersonImage>
-
-        <button
-          onClick={() => {
-            setRerender((current) => {
-              return !rerender;
-            });
-          }}
-        >
-          SKIP
-        </button>
-      </div>
+    <personQuotedContext.Provider value={{}}>
+      <ReactQuery />
     </personQuotedContext.Provider>
   );
 }
