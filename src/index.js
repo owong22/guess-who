@@ -12,7 +12,6 @@ root.render(
   // <React.StrictMode>
   <QueryClientProvider client={queryClient}>
     <App />
-    <p>REACT_APP_API_KEY_QUOTE: {process.env.REACT_APP_API_KEY_QUOTE}</p>
   </QueryClientProvider>
   // </React.StrictMode>
 );
