@@ -3,7 +3,7 @@ import GuessBox from "./GuessBox";
 const Quote = ({ quote }) => {
   return (
     <div>
-      <div>{quote}</div>
+      <div>"{quote}"</div>
       <GuessBox></GuessBox>
     </div>
   );

@@ -35,7 +35,7 @@ export const ReactQuery = () => {
   });
 
   useEffect(() => {
-    quoteRefetch();
+    // quoteRefetch(); // Commented out to make styling easier
   }, []);
 
   if (showAlert) {
