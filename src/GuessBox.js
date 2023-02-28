@@ -19,15 +19,18 @@ const GuessBox = () => {
   };
 
   return (
-    <form action="input" onSubmit={handleSubmit}>
-      <label htmlFor="">Guess:</label>
-      <input
-        type="text"
-        onChange={(e) => {
-          setGuess(e.target.value);
-        }}
-      />
-    </form>
+    <div className="flex items-center mr-7">
+      <form action="input" onSubmit={handleSubmit}>
+        <label htmlFor="">Guess:</label>
+        <input
+          type="text"
+          onChange={(e) => {
+            setGuess(e.target.value);
+          }}
+          className="rounded-md"
+        />
+      </form>
+    </div>
   );
 };
 

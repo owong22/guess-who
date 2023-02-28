@@ -12,6 +12,7 @@ export const renderContext = createContext(); // Test
 export const ReactQuery = () => {
   const [showAlert, setShowAlert] = useState(false);
   const [alertValue, setAlertValue] = useState("Incorrect");
+  // const [showAnser, setShowAnswer] = useState(false);
   const {
     data: quote,
     refetch: quoteRefetch,
@@ -68,16 +69,33 @@ export const ReactQuery = () => {
     <renderContext.Provider
       value={{ quoteRefetch, personQuoted, setShowAlert, setAlertValue }}
     >
-      <div>
-        <Quote quote={quote?.content}></Quote>
-        <h1>{quote?.originator.name}</h1>
-        <GeneratedImage imageURL={image?.data.data[0].url}></GeneratedImage>
-        <button onClick={imageRefetch} className="flex">
-          Generate Another Image
-        </button>
-        <button onClick={quoteRefetch} className="flex">
-          Skip this Person
-        </button>
+      <div className="flex flex-col">
+        <div>
+          <h1 className="flex justify-center text-green-400 text-7xl">
+            Guess Who
+          </h1>
+        </div>
+        <div>{quote?.originator.name}</div>
+        <div className="mx-auto">
+          <GeneratedImage imageURL={image?.data.data[0].url}></GeneratedImage>
+        </div>
+        <div className="">
+          <Quote quote={quote?.content} person={quote?.originator.name}></Quote>
+        </div>
+        <div className="flex justify-center my-7">
+          <button
+            onClick={imageRefetch}
+            className="flex px-3 py-2 mx-3 text-white bg-purple-500 rounded-md hover:bg-purple-600"
+          >
+            Generate Another Image
+          </button>
+          <button
+            onClick={quoteRefetch}
+            className="flex px-3 py-2 mx-3 text-white bg-purple-500 rounded-md hover:bg-purple-600"
+          >
+            Skip this Person
+          </button>
+        </div>
       </div>
     </renderContext.Provider>
   );

@@ -7,7 +7,7 @@ import { ReactQuery } from "./ReactQuery";
 function App() {
   const [introduction, setIntroduction] = useState(true);
   return (
-    <div className="flex w-4/5 mx-auto font-mono ">
+    <div className="flex justify-center m-10 font-mono">
       {introduction ? (
         <Introduction setIntroduction={setIntroduction}></Introduction>
       ) : (
