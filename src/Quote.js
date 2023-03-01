@@ -4,8 +4,8 @@ import { useState } from "react";
 const Quote = ({ quote, person, imageRefetch }) => {
   const [showAnswer, setShowAnswer] = useState(false);
   return (
-    <div className="max-w-xl">
-      <div>
+    <div className="max-w-xl bg-gray-100 rounded-sm">
+      <div className="m-3">
         "{quote}" -
         {showAnswer ? (
           person
@@ -15,7 +15,7 @@ const Quote = ({ quote, person, imageRefetch }) => {
           </button>
         )}
       </div>
-      <div className="flex justify-center my-4">
+      <div className="flex justify-center my-4 ">
         <GuessBox></GuessBox>
       </div>
     </div>

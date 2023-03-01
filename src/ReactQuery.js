@@ -12,7 +12,7 @@ export const renderContext = createContext(); // Test
 export const ReactQuery = () => {
   const [showAlert, setShowAlert] = useState(false);
   const [alertValue, setAlertValue] = useState("Incorrect");
-  // const [showAnser, setShowAnswer] = useState(false);
+
   const {
     data: quote,
     refetch: quoteRefetch,
@@ -36,7 +36,7 @@ export const ReactQuery = () => {
   });
 
   useEffect(() => {
-    // quoteRefetch(); // Commented out to make styling easier
+    quoteRefetch(); // Commented out to make styling easier
   }, []);
 
   if (showAlert) {
@@ -58,7 +58,8 @@ export const ReactQuery = () => {
     quote?.originator.name === "Cornelius Keagon" ||
     quote?.originator.name === "Rumi" ||
     quote?.originator.name === "bts" ||
-    quote?.originator.name === "Adolf Hitler"
+    quote?.originator.name === "Adolf Hitler" ||
+    quote?.originator.name === "Matka Tereza"
   ) {
     quoteRefetch();
   }
@@ -71,27 +72,26 @@ export const ReactQuery = () => {
     >
       <div className="flex flex-col">
         <div>
-          <h1 className="flex justify-center text-green-400 text-7xl">
+          <h1 className="flex justify-center pb-2 text-green-600 underline text-7xl">
             Guess Who
           </h1>
         </div>
-        <div>{quote?.originator.name}</div>
         <div className="mx-auto">
           <GeneratedImage imageURL={image?.data.data[0].url}></GeneratedImage>
         </div>
-        <div className="">
+        <div className="my-3">
           <Quote quote={quote?.content} person={quote?.originator.name}></Quote>
         </div>
-        <div className="flex justify-center my-7">
+        <div className="flex justify-center ">
           <button
             onClick={imageRefetch}
-            className="flex px-3 py-2 mx-3 text-white bg-purple-500 rounded-md hover:bg-purple-600"
+            className="flex px-3 py-2 mx-3 text-white bg-purple-500 rounded-md drop-shadow-2xl hover:bg-purple-600"
           >
-            Generate Another Image
+            Generate Image
           </button>
           <button
             onClick={quoteRefetch}
-            className="flex px-3 py-2 mx-3 text-white bg-purple-500 rounded-md hover:bg-purple-600"
+            className="flex px-3 py-2 mx-3 text-white bg-red-500 rounded-md hover:bg-red-600 drop-shadow-2xl"
           >
             Skip this Person
           </button>

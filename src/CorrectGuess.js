@@ -7,7 +7,14 @@ const CorrectGuess = ({ setShowAlert, alertValue }) => {
     }, 3000);
     return () => clearTimeout(timeout);
   }, []);
-  return <h1>{alertValue}</h1>;
+
+  if (alertValue == "Correct") {
+    return (
+      <h1 className="p-3 text-2xl bg-green-400 rounded-md">{alertValue}</h1>
+    );
+  } else {
+    return <h1 className="p-3 text-2xl bg-red-400 rounded-md">{alertValue}</h1>;
+  }
 };
 
 export default CorrectGuess;

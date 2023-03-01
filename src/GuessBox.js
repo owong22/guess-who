@@ -7,9 +7,17 @@ const GuessBox = () => {
   const [guess, setGuess] = useState(true);
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(guess);
-    console.log(personQuoted);
-    if (guess.toUpperCase() == personQuoted.toUpperCase()) {
+
+    let correctGuess = false;
+    let splitNames = personQuoted.split(" ");
+
+    splitNames.forEach((current) => {
+      if (current.toUpperCase() == guess.toUpperCase()) {
+        correctGuess = true;
+      }
+    });
+
+    if (guess.toUpperCase() == personQuoted.toUpperCase() || correctGuess) {
       quoteRefetch();
       setAlertValue("Correct");
     } else {
@@ -27,7 +35,7 @@ const GuessBox = () => {
           onChange={(e) => {
             setGuess(e.target.value);
           }}
-          className="rounded-md"
+          className="mb-2 border-2 border-black rounded-md"
         />
       </form>
     </div>
