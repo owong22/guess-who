@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "/guess-who/static/css/main.f4317e0f.css",
+    "main.js": "/guess-who/static/js/main.648e278b.js",
+    "static/js/787.4264158c.chunk.js": "/guess-who/static/js/787.4264158c.chunk.js",
+    "static/media/layered-waves-haikei-lg.svg": "/guess-who/static/media/layered-waves-haikei-lg.c1ae5fbc39f7e44311bc.svg",
+    "static/media/layered-waves-haikei-md.svg": "/guess-who/static/media/layered-waves-haikei-md.dbefd5214cfd73d583a9.svg",
+    "static/media/layered-waves-haikei-xl.svg": "/guess-who/static/media/layered-waves-haikei-xl.e136744c7814fbe90fe0.svg",
+    "static/media/layered-waves-haikei-xxl.svg": "/guess-who/static/media/layered-waves-haikei-xxl.e8911b88f7b47f3b13ec.svg",
+    "static/media/layered-waves-haikei-sm.svg": "/guess-who/static/media/layered-waves-haikei-sm.1412eeaaf7965df8740c.svg",
+    "index.html": "/guess-who/index.html",
+    "main.f4317e0f.css.map": "/guess-who/static/css/main.f4317e0f.css.map",
+    "main.648e278b.js.map": "/guess-who/static/js/main.648e278b.js.map",
+    "787.4264158c.chunk.js.map": "/guess-who/static/js/787.4264158c.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.f4317e0f.css",
+    "static/js/main.648e278b.js"
+  ]
+}
