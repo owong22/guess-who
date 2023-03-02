@@ -4,7 +4,7 @@ import { useState } from "react";
 const Quote = ({ quote, person, imageRefetch }) => {
   const [showAnswer, setShowAnswer] = useState(false);
   return (
-    <div className="max-w-xl bg-gray-100 rounded-sm">
+    <div className="max-w-xl p-1 bg-gray-200 rounded-sm">
       <div className="m-3">
         "{quote}" -
         {showAnswer ? (

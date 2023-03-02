@@ -21,6 +21,7 @@ export const ReactQuery = () => {
     queryKey: ["quote"],
     queryFn: fetchQuote,
     enabled: false,
+    refetchOnWindowFocus: false,
   });
 
   const person = quote?.originator.name;
@@ -33,6 +34,7 @@ export const ReactQuery = () => {
     queryKey: ["image", person],
     queryFn: () => fetchImage(person),
     enabled: !!person,
+    refetchOnWindowFocus: false,
   });
 
   useEffect(() => {
@@ -72,7 +74,7 @@ export const ReactQuery = () => {
     >
       <div className="flex flex-col">
         <div>
-          <h1 className="flex justify-center pb-2 text-green-600 underline text-7xl">
+          <h1 className="flex justify-center pb-2 text-gray-300 underline text-7xl">
             Guess Who
           </h1>
         </div>
