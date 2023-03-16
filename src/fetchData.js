@@ -15,7 +15,6 @@ export const fetchQuote = async () => {
     options
   );
   const quoteData = await response.json();
-  console.log(quoteData);
 
   return quoteData;
 };
@@ -32,6 +31,6 @@ export const fetchImage = async (person) => {
     n: 2,
     size: "1024x1024",
   });
-  console.log(response);
+
   return response;
 };
